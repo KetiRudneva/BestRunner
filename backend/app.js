@@ -52,9 +52,9 @@ app.post("/auth", urlencodedParser, function (request, response) {
 
     usersCollection.find({username: name}).toArray((err, result) => {
         if (result.length === 0) {
-            response.json({result: "not registered"}); // отправляем пришедший ответ обратно
+            response.json({result: "not registered"}); // отправляем ответ обратно
         } else {
-            response.json({result: "ok", user: result}); // отправляем пришедший ответ обратно
+            response.json({result: "ok", user: result}); // отправляем ответ обратно
         }
     })
 });

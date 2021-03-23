@@ -17,17 +17,25 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         header: {
             marginTop: 150,
-            fontSize: 40
+            fontSize: 40,
+            fontFamily: "Roboto, sans-serif"
         },
         input: {
             marginTop: 15,
-            width: 310
+            width: "100%"
         },
         buttonsContainer: {
             marginTop: 20,
             display: "flex",
             justifyContent: "space-around",
-            width: 310,
+        },
+        loginContainer: {
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            minWidth: 325,
+            maxWidth: 325
         }
     }),
 );
@@ -54,32 +62,32 @@ export const LoginComponent = (props: LoginComponent) => {
         <div className={classes.root}>
 
             {selectedAction === "login" ?
-                <>
+                <div className={classes.loginContainer}>
                     <Typography className={classes.header}>Best Runner</Typography>
                     <TextField value={login} onChange={(e) => setLogin(e.target.value)} className={classes.input}
                                variant="outlined" margin="dense" label="Login"/>
                     <TextField value={password} onChange={(e) => setPassword(e.target.value)} className={classes.input}
                                variant="outlined" margin="dense" label="Password"/>
-                    <Button style={{width: 310, marginTop: 15}} variant="contained" color="primary" onClick={() => {
+                    <Button style={{marginTop: 15}} fullWidth variant="contained" color="primary" onClick={() => {
                         handleLogin()
                     }}>
                         Войти
                     </Button>
-                    <Typography style={{marginTop: 15}}>Еще нет аккаунта? <strong onClick={() => {
+                    <Typography style={{marginTop: 15, fontSize: 16}}>Еще нет аккаунта? <strong onClick={() => {
                         setSelectedAction("reg");
                         setPassword("");
                         setLogin("");
                     }} style={{color: "blue", cursor: "pointer"}}>Зарегистрироваться</strong></Typography>
-                </> : null
+                </div> : null
             }
             {selectedAction === "reg" ?
-                <>
+                <div className={classes.loginContainer}>
                     <Typography className={classes.header}>Регистрация</Typography>
                     <TextField value={login} onChange={(e) => setLogin(e.target.value)} className={classes.input}
                                variant="outlined" margin="dense" label="Login"/>
                     <TextField value={password} onChange={(e) => setPassword(e.target.value)} className={classes.input}
                                variant="outlined" margin="dense" label="Password"/>
-                        <Button style={{width: 310, marginTop: 15}} variant="contained" color="primary" onClick={handleRegistration}>
+                        <Button style={{marginTop: 15}} fullWidth variant="contained" color="primary" onClick={handleRegistration}>
                             Зарегистрироваться
                         </Button>
                     <Typography style={{marginTop: 15}}><strong onClick={() => {
@@ -87,7 +95,7 @@ export const LoginComponent = (props: LoginComponent) => {
                         setPassword("");
                         setLogin("");
                     }} style={{color: "blue", cursor: "pointer"}}>Вернуться к авторизации</strong></Typography>
-                </>
+                </div>
                 : null
             }
         </div>
