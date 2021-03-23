@@ -1,0 +1,18 @@
+### Send POST request with json body
+POST http://localhost:3000/addRecord
+Content-Type: application/json
+
+//_id: number;
+//user_id: number;
+//type: "бег" | "велосипед" | "лыжи" | "ходьба";
+//date: string;
+//length: number;
+//comment: string;
+
+{
+  "user_id": "605378b31e95b35246f3b86a",
+  "type": "бег",
+  "date": "2021-03-18T16:16:36.711Z",
+  "length": 24,
+  "comment": "комментарий"
+}
